@@ -22,10 +22,6 @@ TradingSystemPy is a Python-based trading system framework designed for building
   - Tools for position sizing, stop-loss, and take-profit management.
   - Portfolio-level risk controls (e.g., max drawdown, VaR).
 
-- **Live Trading Integration**:
-  - Plug-and-play integration with popular brokers and APIs (e.g., Interactive Brokers, Alpaca).
-  - Real-time order execution and monitoring.
-
 - **Extensibility**:
   - Open architecture to add custom modules (e.g., new indicators, APIs, or execution models).
   - Suitable for research and production environments.
