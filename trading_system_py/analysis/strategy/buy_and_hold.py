@@ -1,5 +1,5 @@
 import pandas as pd
-from src.analysis.strategy.strategy import Strategy
+from trading_system_py.analysis.strategy.strategy import Strategy
 
 
 class BuyAndHold(Strategy):

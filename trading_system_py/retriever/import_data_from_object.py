@@ -1,8 +1,8 @@
 import os
 import pickle
 
-from src.retriever.data_object_manipulation import DataObjectManipulation
-from src.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
+from trading_system_py.retriever.data_object_manipulation import DataObjectManipulation
+from trading_system_py.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
 
 
 class ImportDataFromObject(DataObjectManipulation, RiskFreeObjectManipulation):

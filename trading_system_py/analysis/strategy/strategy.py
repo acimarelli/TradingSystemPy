@@ -1,5 +1,5 @@
 class Strategy:
-    def generate_signals(self, data):
+    def generate_signals(self):
         """
         Genera segnali di trading basati sulla strategia.
 

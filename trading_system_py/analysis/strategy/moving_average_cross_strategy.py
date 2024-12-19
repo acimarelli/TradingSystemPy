@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from src.analysis.strategy.strategy import Strategy
-from src.utils.technical_indicators import TechnicalIndicators
+from trading_system_py.analysis.strategy.strategy import Strategy
+from trading_system_py.utils.technical_indicators import TechnicalIndicators
 
 
 class MovingAverageCrossStrategy(Strategy):

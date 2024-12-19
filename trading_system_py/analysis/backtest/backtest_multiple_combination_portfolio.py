@@ -1,8 +1,8 @@
-import sys
+import pandas as pd
 import itertools
 import plotly.graph_objects as go
-from src.analysis.backtest.backtest import Backtest
-from src.analysis.portfolio.portfolio import Portfolio
+from trading_system_py.analysis.backtest.backtest import Backtest
+from trading_system_py.analysis.portfolio.portfolio import Portfolio
 
 
 class BacktestMultipleCombinationPortfolio:

@@ -9,9 +9,9 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
-from src.retriever.data_object_manipulation import DataObjectManipulation
-from src.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
-from src.utils.data_visualization import DataVisualizationStock
+from trading_system_py.retriever.data_object_manipulation import DataObjectManipulation
+from trading_system_py.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
+from trading_system_py.utils.data_visualization import DataVisualizationStock
 
 
 class FetchSingleStock:

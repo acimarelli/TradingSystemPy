@@ -2,7 +2,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 import talib as ta
-from src.utils.technical_indicators import TechnicalIndicators, TechnicalIndicatorsDataObject
+
+from trading_system_py.utils.technical_indicators import TechnicalIndicatorsDataObject
+
 
 
 class DataVisualizationStock:

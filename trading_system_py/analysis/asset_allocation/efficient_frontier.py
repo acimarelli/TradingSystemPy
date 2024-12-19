@@ -1,6 +1,6 @@
 import numpy as np
-from src.retriever.data_object_manipulation import DataObjectManipulation
-from src.analysis.asset_allocation.efficient_frontier_calculation import EfficientFrontierCalculation
+from trading_system_py.retriever.data_object_manipulation import DataObjectManipulation
+from trading_system_py.analysis.asset_allocation.efficient_frontier_calculation import EfficientFrontierCalculation
 
 
 class EfficientFrontier:
