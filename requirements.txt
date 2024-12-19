@@ -1,6 +1,4 @@
-os
-json
-numpy
-matplotlib
-yfinance
-ta-lib
+numpy==2.2.0
+matplotlib==3.10.0
+yfinance==0.2.50
+ta-lib==0.4.0

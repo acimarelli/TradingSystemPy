@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "trading-system-py"
+version = "0.1.0"
+description = "TradingSystemPy is a Python-based trading system framework designed for building, testing, and deploying algorithmic trading strategies. It provides tools for data ingestion, strategy development, backtesting, risk management, and live trading integration, making it a comprehensive solution for traders and developers alike."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "2.2.0"
+matplotlib = "3.10.0"
+yfinance = "0.2.50"
+ta-lib = "0.5.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

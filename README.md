@@ -1,10 +1,12 @@
 # TradingSystemPy
+
 TradingSystemPy is a Python-based trading system framework designed for building, testing, and deploying algorithmic trading strategies. It provides tools for data ingestion, strategy development, backtesting, risk management, and live trading integration, making it a comprehensive solution for traders and developers alike.
 
 ---
 
 ## **Key Features**
-- **Data Management**: 
+
+- **Data Management**:
   - Supports historical and real-time data ingestion from multiple sources (CSV, APIs, databases).
   - Flexible preprocessing pipeline for cleaning and formatting market data.
 
@@ -29,6 +31,7 @@ TradingSystemPy is a Python-based trading system framework designed for building
 ---
 
 ## **Usage Scenarios**
+
 - **Retail Traders**: Build and backtest trading strategies without requiring advanced technical expertise.
 - **Quantitative Analysts**: Prototype and analyze strategies with integrated performance metrics.
 - **Developers**: Extend the framework to support custom workflows and integrations.
@@ -37,6 +40,7 @@ TradingSystemPy is a Python-based trading system framework designed for building
 ---
 
 ## **Technologies Used**
+
 - **Python**: Core language for development.
 - **Pandas, NumPy**: For data analysis and handling.
 - **Matplotlib, Plotly**: For visualization.
