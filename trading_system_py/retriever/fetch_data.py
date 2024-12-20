@@ -170,11 +170,14 @@ class FetchSingleStock:
         """
         all_data = yf.download(ticker, start=date_range[0], end=date_range[1]) if date_range is not None else \
                    yf.download(ticker, period='max')
+        
+        all_data.columns = all_data.columns.droplevel(1)
+
         annualized = all_data["Close"]
         daily = annualized.apply(FetchSingleStock.deannualize)
         calculated_data = pd.DataFrame({"index": all_data.index, 
-                                        "annualized": annualized.values.flatten(), 
-                                        "daily": daily.values.flatten()})
+                                        "annualized": annualized, 
+                                        "daily": daily})
         out = pd.concat([all_data, calculated_data.set_index("index")], axis=1)
         out["ticker"] = ticker
         return out[["ticker"] + [c for c in all_data.columns] + ["annualized", "daily"]]
