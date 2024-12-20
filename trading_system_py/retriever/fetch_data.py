@@ -368,6 +368,8 @@ class FetchData(FetchSingleStock, DataObjectManipulation, RiskFreeObjectManipula
         :param filename: Il nome del file pickle.
         :return: Nessun valore di ritorno. Salva i dati su file.
         """
+        os.makedirs(path_out, exist_ok=True)
+
         with open(os.path.join(path_out, filename), 'wb') as obj:
             pickle.dump({'tickers': self.ticker, 'data': self.data,      
                          'risk_free_ticker': self.risk_free_ticker, 'risk_free_rate_curve': self.risk_free_rate_curve}, obj)
