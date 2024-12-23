@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LSTM
 
 from sklearn.preprocessing import MinMaxScaler
 
@@ -45,10 +46,10 @@ class LSTMNeuralNetworkStrategy(Strategy):
         self.model = self._build_model()
 
     def _build_model(self):
-        model = tf.Sequential()
-        model.add(tf.LSTM(units=50, return_sequences=True, input_shape=(self.lookback, 1)))
-        model.add(tf.LSTM(units=50))
-        model.add(tf.Dense(units=1, activation='sigmoid'))
+        model = Sequential()
+        model.add(LSTM(units=50, return_sequences=True, input_shape=(self.lookback, 1)))
+        model.add(LSTM(units=50))
+        model.add(Dense(units=1, activation='sigmoid'))
         model.compile(optimizer='adam', loss='binary_crossentropy')
         return model
 
