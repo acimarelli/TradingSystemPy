@@ -1,6 +1,0 @@
-os
-json
-numpy
-matplotlib
-yfinance
-ta-lib

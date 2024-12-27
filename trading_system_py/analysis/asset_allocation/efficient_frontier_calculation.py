@@ -5,7 +5,7 @@ import scipy.optimize as sco
 import plotly.graph_objects as go
 import plotly.express as px
 
-from src.utils.generic_calculation import GenericCalculation
+from trading_system_py.utils.generic_calculation import GenericCalculation
 
 
 class EfficientFrontierCalculation:

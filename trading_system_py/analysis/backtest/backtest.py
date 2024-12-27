@@ -5,7 +5,7 @@ from statsmodels.tsa.arima.model import ARIMA
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from functools import reduce
-from src.analysis.portfolio.portfolio import Portfolio
+from trading_system_py.analysis.portfolio.portfolio import Portfolio
 
 
 class Backtest:

@@ -9,9 +9,9 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
-from src.retriever.data_object_manipulation import DataObjectManipulation
-from src.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
-from src.utils.data_visualization import DataVisualizationStock
+from trading_system_py.retriever.data_object_manipulation import DataObjectManipulation
+from trading_system_py.retriever.risk_free_object_manipulation import RiskFreeObjectManipulation
+from trading_system_py.utils.data_visualization import DataVisualizationStock
 
 
 class FetchSingleStock:
@@ -170,9 +170,14 @@ class FetchSingleStock:
         """
         all_data = yf.download(ticker, start=date_range[0], end=date_range[1]) if date_range is not None else \
                    yf.download(ticker, period='max')
+        
+        all_data.columns = all_data.columns.droplevel(1)
+
         annualized = all_data["Close"]
         daily = annualized.apply(FetchSingleStock.deannualize)
-        calculated_data = pd.DataFrame({"index": all_data.index, "annualized": annualized, "daily": daily})
+        calculated_data = pd.DataFrame({"index": all_data.index, 
+                                        "annualized": annualized, 
+                                        "daily": daily})
         out = pd.concat([all_data, calculated_data.set_index("index")], axis=1)
         out["ticker"] = ticker
         return out[["ticker"] + [c for c in all_data.columns] + ["annualized", "daily"]]
@@ -366,6 +371,8 @@ class FetchData(FetchSingleStock, DataObjectManipulation, RiskFreeObjectManipula
         :param filename: Il nome del file pickle.
         :return: Nessun valore di ritorno. Salva i dati su file.
         """
+        os.makedirs(path_out, exist_ok=True)
+
         with open(os.path.join(path_out, filename), 'wb') as obj:
             pickle.dump({'tickers': self.ticker, 'data': self.data,      
                          'risk_free_ticker': self.risk_free_ticker, 'risk_free_rate_curve': self.risk_free_rate_curve}, obj)

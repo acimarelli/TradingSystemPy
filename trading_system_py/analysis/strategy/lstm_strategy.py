@@ -1,13 +1,12 @@
 import pandas as pd
 import numpy as np
-
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv1D, Flatten
 from tensorflow.keras.layers import Dense, LSTM
+
 from sklearn.preprocessing import MinMaxScaler
 
-from src.analysis.strategy.strategy import Strategy
-from src.utils.technical_indicators import TechnicalIndicators
+from trading_system_py.analysis.strategy.strategy import Strategy
+from trading_system_py.utils.technical_indicators import TechnicalIndicators
 
 
 class LSTMNeuralNetworkStrategy(Strategy):
