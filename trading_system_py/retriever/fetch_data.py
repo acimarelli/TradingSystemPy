@@ -1,6 +1,7 @@
 import os
 import yfinance as yf
 import pandas as pd
+import numpy as np
 import pickle
 import plotly.graph_objects as go
 
@@ -60,7 +61,7 @@ class FetchSingleStock:
         :param ticker: Il ticker del titolo per il quale calcolare il rapporto Put/Call.
         :return:pd.DataFrame: Un DataFrame contenente le date di scadenza come indice e il rapporto Put/Call 
                           (colonna 'Put/Call Ratio') per ciascuna data di scadenza.
-                          Se il volume totale delle call è zero, il rapporto sarà impostato a `None`.
+                          Se il volume totale delle call è zero, il rapporto sarà impostato a `NaN`.
         """
         stock = yf.Ticker(ticker)
 
@@ -81,14 +82,14 @@ class FetchSingleStock:
             if total_call_volume > 0:
                 put_call_ratio = total_put_volume / total_call_volume
             else:
-                put_call_ratio = None  # Evita divisioni per zero
+                put_call_ratio = np.nan  # Evita divisioni per zero
 
             put_call_ratios[exp_date] = put_call_ratio
 
         # Converti in DataFrame per una visualizzazione più semplice
         df_put_call_ratios = pd.DataFrame.from_dict(put_call_ratios, orient='index', columns=['Put/Call Ratio'])
 
-        return put_call_ratios
+        return df_put_call_ratios
     
     # SCRAPE FUNDAMENTAL DATA
     @staticmethod

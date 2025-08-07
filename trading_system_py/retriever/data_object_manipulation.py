@@ -111,8 +111,34 @@ class DataObjectManipulation:
             return {isin: self.get_ts_value(isin=isin, attribute_list=attribute_list) for isin in isin_list}
 
     # FILTER HISTORY IN DATA-OBJECT
+    # def filter_history(self, starting_date: datetime.datetime|str, end_date: datetime.datetime|str):
+    #     for isin in self.ticker:
+    #         self.data[isin].update({"History": self.data[isin]["History"].loc[(self.data[isin]["History"].index.tz_convert(None) >= starting_date) &
+    #                                                                           (self.data[isin]["History"].index.tz_convert(None) <= end_date)]})
+    #     return self.data
+    
     def filter_history(self, starting_date: datetime.datetime|str, end_date: datetime.datetime|str):
+        starting_date = pd.to_datetime(starting_date)
+        end_date = pd.to_datetime(end_date)
+
+        if starting_date.tzinfo is None:
+            starting_date = starting_date.tz_localize("UTC")
+        else:
+            starting_date = starting_date.tz_convert("UTC")
+
+        if end_date.tzinfo is None:
+            end_date = end_date.tz_localize("UTC")
+        else:
+            end_date = end_date.tz_convert("UTC")
+
         for isin in self.ticker:
-            self.data[isin].update({"History": self.data[isin]["History"].loc[(self.data[isin]["History"].index.tz_convert(None) >= starting_date) &
-                                                                              (self.data[isin]["History"].index.tz_convert(None) <= end_date)]})
+            history = self.data[isin]["History"]
+            if history.index.tz is None:
+                history.index = history.index.tz_localize("UTC")
+            else:
+                history.index = history.index.tz_convert("UTC")
+
+            self.data[isin].update({
+                "History": history.loc[(history.index >= starting_date) & (history.index <= end_date)]
+            })
         return self.data
